@@ -9,19 +9,19 @@ import org.junit.Test;
 public class InitGuice {
     private static Injector injector;
 
-    /*´´½¨Ò»¸öguiceµÄÈİÆ÷*/
+    /*åˆ›å»ºä¸€ä¸ªguiceçš„å®¹å™¨*/
     @BeforeClass
     public static void init() {
-        //Stage µÄÈıÖÖ·½Ê½
-        //TOOL£¨×îĞ¡´ú¼Û£¬ÓĞĞ©¹¦ÄÜ»áÎŞ·¨Ê¹ÓÃ£©
-        //DEVELOPMENT£¨¿ìËÙÆô¶¯£¬µ«²»»á×öĞ£Ñé£©
-        //PRODUCTION£¨Òì³£¼ì²éÓëĞÔÄÜ£¬Æô¶¯»á±È½ÏÂı£©
+        //Stage çš„ä¸‰ç§æ–¹å¼
+        //TOOLï¼ˆæœ€å°ä»£ä»·ï¼Œæœ‰äº›åŠŸèƒ½ä¼šæ— æ³•ä½¿ç”¨ï¼‰
+        //DEVELOPMENTï¼ˆå¿«é€Ÿå¯åŠ¨ï¼Œä½†ä¸ä¼šåšæ ¡éªŒï¼‰
+        //PRODUCTIONï¼ˆï¼Œå¼‚å¸¸æ£€èƒ½å¯åŠ¨ä¼šæ¯”è¾ƒæŸ¥ä¸æ€§æ…¢ï¼‰
         //Guice.createInjector(Stage.PRODUCTION, new ModuleA());
-        //Guice.createInjector(new ModuleA());//Ä¬ÈÏDEVELOPMENT
+        //Guice.createInjector(new ModuleA());//é»˜è®¤DEVELOPMENT
 
         injector = Guice.createInjector(
                 new BinderModule()
-                /*¶à¸öbinder Ğ´·¨*/
+                /*å¤šä¸ªbinder å†™æ³•*/
                 //new BinderModuleA(),
                 //new BinderModuleB()
         );
@@ -29,7 +29,7 @@ public class InitGuice {
 
     @Test
     public void test(){
-        //Ê¹ÓÃ×¢ÈëÆ÷µÄgetInstance·½·¨»ñÈ¡Ä¿±êÀà
+        //ä½¿ç”¨æ³¨å…¥å™¨çš„getInstanceæ–¹æ³•è·å–ç›®æ ‡ç±»
         Application app = injector.getInstance(Application.class);
         app.test();
     }

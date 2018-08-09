@@ -6,17 +6,17 @@ import com.zfh.inter.LogService;
 
 public class Application {
     private LogService logService;
-    /*ÊôĞÔ·½Ê½×¢Èë*/
-   // @Inject
-   // @Named("springEventService")
-   // private LogService logService;
+    /*å±æ€§æ–¹å¼æ³¨å…¥*/
+    // @Inject
+    // @Named("springEventService")
+    // private LogService logService;
 
-    //@InjectºÍ@Named½áºÏÊ¹ÓÃ´ïµ½°´Ãû×Ö×¢Èë£¬@InjectµÄoptionalÄ¬ÈÏÎªfalse£¬×¢ÈëÊ±Èç¹ûÒÀÀµ²»´æÔÚ£¬Ôò±¨´íÍ£Ö¹£¬
-    // µ±Ê¹ÓÃ@Inject(optional = true)Ê±¿É´ïµ½ºöÈ»ÒÀÀµÊÇ·ñ´æÔÚµÄĞ§¹û
-
-    /*¹¹ÔìÆ÷ÒÀÀµ×¢Èë*/
+    //@Injectå’Œ@Namedç»“åˆä½¿ç”¨è¾¾åˆ°æŒ‰åå­—æ³¨å…¥ï¼Œ@Injectçš„optionalé»˜è®¤ä¸ºfalseï¼Œæ³¨å…¥æ—¶å¦‚æœä¾èµ–ä¸å­˜åœ¨ï¼Œåˆ™æŠ¥é”™åœæ­¢ï¼Œ
+    // å½“ä½¿ç”¨@(optional = true)æ—¶å¯è¾¾åˆ°å¿½ç„¶ä¾èµ–æ˜¯å¦å­˜åœ¨çš„æ•ˆæœ
+    // Inject
+    /*æ„é€ å™¨ä¾èµ–æ³¨å…¥*/
     @Inject
-    public  Application(@Named("log4j") LogService logService){
+    public Application(@Named("log4j") LogService logService){
         this.logService = logService;
     }
 

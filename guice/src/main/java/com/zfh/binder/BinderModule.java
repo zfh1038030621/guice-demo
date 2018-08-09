@@ -11,22 +11,22 @@ import com.zfh.inter.LogService;
 
 public class BinderModule extends AbstractModule {
     protected void configure() {
-        //Ä¬ÈÏÊÇ¶àÀı£¬µ¥ÀûµÄ»°ÒªĞ´Singleton£¬»òÕßÖ±½ÓÔÚÀàÍ·²¿Ğ´×¢½â@Singleton
+        //é»˜è®¤æ˜¯å¤šä¾‹ï¼Œå•åˆ©çš„è¯è¦å†™Singletonï¼Œæˆ–è€…ç›´æ¥åœ¨ç±»å¤´éƒ¨å†™æ³¨è§£@Singleton
         bind(LogService.class).annotatedWith(Names.named("slf4j"))
                 .to(Slf4jLogServiceImpl.class).in(Singleton.class);
         bind(LogService.class).annotatedWith(Names.named("log4j"))
                 .to(Log4jLogServiceImpl.class);
 
-        //###################°ó¶¨Ò»¸öÀ¹½ØÆ÷##############################################
-        //Èı¸ö²ÎÊı·Ö±ğÎª£º1ÄãÒªÀ¹½ØµÄÀà   2ÄãÒªÀ¹½ØµÄ·½·¨  3À¹½ØÆ÷
+        //###################ç»‘å®šä¸€ä¸ªæ‹¦æˆªå™¨##############################################
+        //ä¸‰ä¸ªå‚æ•°åˆ†åˆ«ä¸ºï¼š1ä½ è¦æ‹¦æˆªçš„ç±»   2ä½ è¦æ‹¦æˆªçš„æ–¹æ³•  3æ‹¦æˆªå™¨
         bindInterceptor(Matchers.any(),Matchers.any(),new LoggerAop());
 
-        //######################ÉèÖÃµ¥ÀıµÄÆäÖĞÒ»¸ö·½Ê½##########################################
+        //######################è®¾ç½®å•ä¾‹çš„å…¶ä¸­ä¸€ä¸ªæ–¹å¼##########################################
 
-       // bind(LogService.class)
-       //         .to(Log4jLogServiceImpl.class).in(Singleton.class);
+        // bind(LogService.class)
+        //         .to(Log4jLogServiceImpl.class).in(Singleton.class);
 
-        //####################Ö±½Ó×¢ÈëÒ»¸öÊµÀı#############################################
+        //####################ç›´æ¥æ³¨å…¥ä¸€ä¸ªå®ä¾‹#############################################
 
         /*bind(String.class)
                 .annotatedWith(Names.named("JDBC URL"))
@@ -35,17 +35,17 @@ public class BinderModule extends AbstractModule {
                 .annotatedWith(Names.named("login timeout seconds"))
                 .toInstance(10);*/
 
-        //#####################³£Á¿°ó¶¨#################################################
-        //names×¢½â³£Á¿°ó¶¨--Ò²¿ÉÓÃÓÚÒ»¸ö½Ó¿Ú¶à¸öÊµÏÖµÄ°ó¶¨
-        //bindConstant().annotatedWith(Names.named("maxResults")).to(10);//ÀàËÆÓÚ°ó¶¨ÁËÒ»¸ö³£Á¿
+        //#####################å¸¸é‡ç»‘å®š#################################################
+        //namesæ³¨è§£å¸¸é‡ç»‘å®š--ä¹Ÿå¯ç”¨äºä¸€ä¸ªæ¥å£å¤šä¸ªå®ç°çš„ç»‘å®š
+        //bindConstant().annotatedWith(Names.named("maxResults")).to(10);//ç±»ä¼¼äºç»‘å®šäº†ä¸€ä¸ªå¸¸é‡
 
     }
 //###############################################################################
-    //µ±Ò»¸ö¶ÔÏóºÜ¸´ÔÓ£¬ÎŞ·¨Ê¹ÓÃ¼òµ¥µÄ¹¹ÔìÆ÷À´Éú³ÉµÄÊ±ºò£¬
-    // ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ@Provides·½·¨£¬Ò²¾ÍÊÇÔÚÅäÖÃÀàÖĞÉú³ÉÒ»¸ö×¢½âÁË@ProvidesµÄ·½·¨¡£
-    // ÔÚ¸Ã·½·¨ÖĞÎÒÃÇ¿ÉÒÔ±àĞ´ÈÎÒâ´úÂëÀ´¹¹Ôì¶ÔÏó¡£
-    //±È·½ËµÅäÖÃÒ»¸öÊı¾İÔ´
-    //ÓĞµãÀàËÆÓÚ springÖĞµÄ@Bean
+    //å½“ä¸€ä¸ªå¯¹è±¡å¾ˆå¤æ‚ï¼Œæ— æ³•ä½¿ç”¨ç®€å•çš„æ„é€ å™¨æ¥ç”Ÿæˆçš„æ—¶å€™ï¼Œ
+    // æˆ‘ä»¬å¯ä»¥ä½¿ç”¨@Providesæ–¹æ³•ï¼Œä¹Ÿå°±æ˜¯åœ¨é…ç½®ç±»ä¸­ç”Ÿæˆä¸€ä¸ªæ³¨è§£äº†@Providesçš„æ–¹æ³•ã€‚
+    // åœ¨è¯¥æ–¹æ³•ä¸­æˆ‘ä»¬å¯ä»¥ç¼–å†™ä»»æ„ä»£ç æ¥æ„é€ å¯¹è±¡ã€‚
+    //æ¯”æ–¹è¯´é…ç½®ä¸€ä¸ªæ•°æ®æº
+    //æœ‰ç‚¹ç±»ä¼¼äº springä¸­çš„@Bean
 
 //    @Provides
 //    TransactionLog provideTransactionLog() {
@@ -55,8 +55,8 @@ public class BinderModule extends AbstractModule {
 //        return transactionLog;
 //    }
 //    @Provides
-    //Ä¬ÈÏÇé¿öÏÂGuice»áÔÚÃ¿´Î×¢ÈëµÄÊ±ºò´´½¨Ò»¸öĞÂ¶ÔÏó¡££¨¶àÀı£©
-    // Èç¹ûÏ£Íû´´½¨Ò»¸öµ¥ÀıÒÀÀµµÄ»°£¬¿ÉÒÔÔÚÊµÏÖÀàÉÏÓ¦ÓÃ@Singleton×¢½â¡£
+    //é»˜è®¤æƒ…å†µä¸‹Guiceä¼šåœ¨æ¯æ¬¡æ³¨å…¥çš„æ—¶å€™åˆ›å»ºä¸€ä¸ªæ–°å¯¹è±¡ã€‚ï¼ˆå¤šä¾‹ï¼‰
+    // å¦‚æœå¸Œæœ›åˆ›å»ºä¸€ä¸ªå•ä¾‹ä¾èµ–çš„è¯ï¼Œå¯ä»¥åœ¨å®ç°ç±»ä¸Šåº”ç”¨@Singletonæ³¨è§£ã€‚
 //    @Singleton
 //    public LogService getLogService(){
 //        LogService service = new Log4jLogServiceImpl();

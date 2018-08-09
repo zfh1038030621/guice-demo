@@ -6,3 +6,8 @@
 
 切面实现
 1，新建一个实现MethodInterceptor的切面类
+
+
+
+如果是web应用（Guice Servlet 为使用web应用程序和Servlet容器提供了一个完整的模式）
+

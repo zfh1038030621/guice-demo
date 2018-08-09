@@ -4,15 +4,12 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
- * ������
- * guice���aop���ܵ�ʵ����Ҫ��aopalliance jar
- * @author zfh
- * @since 2018/08/08
+ * @author  zfh
  */
 public class LoggerAop implements MethodInterceptor {
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         String methodName = methodInvocation.getMethod().getName();
-        System.out.println("��log��"+methodName+"����ִ��");
+        System.out.println("【log】"+methodName+"执行了");
 
         Object ret = null;
         try{
